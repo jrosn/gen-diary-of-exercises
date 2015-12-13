@@ -61,7 +61,11 @@ class PullUpExerciseType(ExerciseType):
 
 
 # Все возможные типы упражнений
-EXERCISE_TYPES = [JumpingOnPlaceExerciseType(), PushUpsExerciseType(), SquattingExerciseType()]
+EXERCISE_TYPES = [
+    JumpingOnPlaceExerciseType(),
+    PushUpsExerciseType(),
+    SquattingExerciseType()
+]
 
 
 class Exercise:
@@ -70,7 +74,11 @@ class Exercise:
         self.property = property
 
     def __str__(self):
-        return "{}: {} {}".format(self.exercise_type.get_name(), str(self.property), self.exercise_type.get_property_suffix())
+        return "{}: {} {}".format(
+            self.exercise_type.get_name(),
+            str(self.property),
+            self.exercise_type.get_property_suffix()
+        )
 
     @staticmethod
     def random():
