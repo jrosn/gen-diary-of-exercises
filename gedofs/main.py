@@ -1,0 +1,55 @@
+import sys
+import datetime
+import random
+import argparse
+from termcolor import colored
+from gedofs import generator
+
+
+MAX_NUM_OF_EXERCISES_PER_DAY = len(generator.EXERCISE_TYPES)
+
+
+def print_exercises_per_day(date):
+    assert(type(date) == datetime.datetime)
+    count_ex = random.randint(0, MAX_NUM_OF_EXERCISES_PER_DAY)
+    if count_ex == 0:
+        return
+    print(colored(date, "blue"))
+    # Убираем повторы: храним уже распечатанные типы упражнений
+    ex_types = set()
+    for i in range(count_ex):
+        while True:
+            ex = generator.Exercise.random()
+            if ex.exercise_type not in ex_types:
+                ex_types.add(ex.exercise_type)
+                print(ex)
+                break
+
+
+def real_main(args):
+    start_date = args.startdate
+    finish_date = args.finishdate
+    step = datetime.timedelta(days=1)
+    while start_date < finish_date:
+        print_exercises_per_day(date=start_date)
+        start_date += step
+
+
+def valid_date(s):
+    try:
+        return datetime.datetime.strptime(s, "%Y-%m-%d")
+    except ValueError:
+        msg = "Not a valid date: '{0}'.".format(s)
+        raise argparse.ArgumentTypeError(msg)
+
+
+def main():
+    parser = argparse.ArgumentParser(prog="gedofs")
+    parser.add_argument('-sd', "--startdate", help="The Start Date - format YYYY-MM-DD ", required=True, type=valid_date)
+    parser.add_argument('-fd', "--finishdate", help="The Finish Date - format YYYY-MM-DD ", required=True, type=valid_date)
+    real_main(parser.parse_args(sys.argv[1:]))
+    return 0
+
+
+if __name__ == '__main__':
+    sys.exit(main())
