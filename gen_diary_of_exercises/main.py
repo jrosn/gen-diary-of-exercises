@@ -3,7 +3,7 @@ import datetime
 import random
 import argparse
 from termcolor import colored
-from gedofs import generator
+from gen_diary_of_exercises import generator
 
 
 MAX_NUM_OF_EXERCISES_PER_DAY = len(generator.EXERCISE_TYPES)
@@ -44,7 +44,7 @@ def valid_date(s):
 
 
 def main():
-    parser = argparse.ArgumentParser(prog="gedofs")
+    parser = argparse.ArgumentParser(prog="gen_diary_of_exercises")
     parser.add_argument('-sd', "--startdate", help="The Start Date - format YYYY-MM-DD ", required=True, type=valid_date)
     parser.add_argument('-fd', "--finishdate", help="The Finish Date - format YYYY-MM-DD ", required=True, type=valid_date)
     real_main(parser.parse_args(sys.argv[1:]))
