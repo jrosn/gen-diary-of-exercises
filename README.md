@@ -7,7 +7,7 @@ sudo apt-get install -y git
 # Клонируем репозиторий
 git clone https://github.com/rmnssnvsk/gen-diary-of-exercises && cd gen-diary-of-exercises
 # Запускаем установку
-python setup.py install
+sudo python3 setup.py install
 ```
 
 ## Использование
