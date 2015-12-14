@@ -51,20 +51,21 @@ class SquattingExerciseType(ExerciseType):
 
 class PullUpExerciseType(ExerciseType):
     def get_name(self):
-        return ""
+        return "Подтягивания"
 
     def get_property_range(self):
-        pass
+        return [1, 5]
 
     def get_property_suffix(self):
-        pass
+        return "раз"
 
 
 # Все возможные типы упражнений
 EXERCISE_TYPES = [
     JumpingOnPlaceExerciseType(),
     PushUpsExerciseType(),
-    SquattingExerciseType()
+    SquattingExerciseType(),
+    PullUpExerciseType()
 ]
 
 

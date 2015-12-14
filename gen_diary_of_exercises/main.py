@@ -27,8 +27,8 @@ def print_exercises_per_day(date):
 
 
 def real_main(args):
-    start_date = args.startdate
-    finish_date = args.finishdate
+    start_date = args.start_date
+    finish_date = args.finish_date
     step = datetime.timedelta(days=1)
     while start_date < finish_date:
         print_exercises_per_day(date=start_date)
