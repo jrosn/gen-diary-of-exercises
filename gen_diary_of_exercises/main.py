@@ -10,7 +10,8 @@ MAX_NUM_OF_EXERCISES_PER_DAY = len(generator.EXERCISE_TYPES)
 
 
 def print_exercises_per_day(date):
-    assert(type(date) == datetime.datetime)
+    if type(date) != datetime.datetime:
+        raise ValueError("Date is not datetime type!")
     count_ex = random.randint(0, MAX_NUM_OF_EXERCISES_PER_DAY)
     if count_ex == 0:
         return
@@ -46,6 +47,7 @@ def valid_date(s):
 def main():
     parser = argparse.ArgumentParser(prog="gen_diary_of_exercises")
     parser.add_argument(
+
         '-sd', '--start-date',
         help="The Start Date - format YYYY-MM-DD",
         required=True,
