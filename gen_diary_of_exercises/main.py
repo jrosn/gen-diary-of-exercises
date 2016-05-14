@@ -15,7 +15,7 @@ def print_exercises_per_day(date):
     count_ex = random.randint(0, MAX_NUM_OF_EXERCISES_PER_DAY)
     if count_ex == 0:
         return
-    print(colored(date, "blue"))
+    print(colored("# " + date.strftime("%d %B %Y"), "blue"))
     # Убираем повторы: храним уже распечатанные типы упражнений
     ex_types = set()
     for i in range(count_ex):
@@ -23,6 +23,7 @@ def print_exercises_per_day(date):
             ex = generator.Exercise.random()
             if ex.exercise_type not in ex_types:
                 ex_types.add(ex.exercise_type)
+                print("* ", end="")
                 print(ex)
                 break
 
