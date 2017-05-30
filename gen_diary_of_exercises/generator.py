@@ -54,7 +54,7 @@ class PullUpExerciseType(ExerciseType):
         return "Подтягивания"
 
     def get_property_range(self):
-        return [1, 5]
+        return [1, 15]
 
     def get_property_suffix(self):
         return "раз"
