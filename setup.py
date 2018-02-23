@@ -14,4 +14,7 @@ setup(
             'gen-diary-of-exercises = gen_diary_of_exercises:main',
         ]
     },
+    install_requires=[
+        'termcolor',
+    ],
 )
